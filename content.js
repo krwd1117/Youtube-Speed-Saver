@@ -28,9 +28,6 @@ const enforcePlaybackSpeed = () => {
     videoFound = true;
     if (Math.abs(video.playbackRate - numericSpeed) > 0.01) {
       video.playbackRate = numericSpeed;
-      console.log(`Youtube Speed Saver: Video speed set to ${numericSpeed}x`);
-    } else {
-      console.log(`Youtube Speed Saver: Video speed already at ${numericSpeed}x`);
     }
   });
 
@@ -41,7 +38,6 @@ const enforcePlaybackSpeed = () => {
 
 // 모든 주기적인 작업을 실행하는 단일 함수
 const runTasks = () => {
-  console.log('Youtube Speed Saver: Running tasks...');
   enforcePlaybackSpeed();
   hideSpeedMenuItem();
 };
@@ -66,10 +62,22 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
 });
 
 // 3. MutationObserver를 사용하여 DOM 변경을 감지합니다.
-const observer = new MutationObserver(runTasks);
+// Debounce function
+const debounce = (func, delay) => {
+  let timeout;
+  return function(...args) {
+    const context = this;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), delay);
+  };
+};
+
+const debouncedRunTasks = debounce(runTasks, 500); // Debounce by 500ms
+
+const observer = new MutationObserver(debouncedRunTasks);
 observer.observe(document.body, { childList: true, subtree: true });
 console.log('Youtube Speed Saver: MutationObserver attached.');
 
 // 4. 마지막으로, 안정적인 대체 수단으로 작업을 주기적으로 실행합니다.
-setInterval(runTasks, 500); // 0.5초마다 실행
+setInterval(runTasks, 5000); // 5초마다 실행
 console.log('Youtube Speed Saver: Interval set for tasks.');
