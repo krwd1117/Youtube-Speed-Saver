@@ -1,0 +1,141 @@
+body {
+  font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f8f9fa; /* Very light gray */
+  color: #343a40; /* Dark gray for primary text */
+  width: 260px; /* Slightly wider for better layout */
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Softer, larger shadow */
+  box-sizing: border-box;
+}
+
+h3 {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  color: #212529; /* Even darker for heading */
+  font-weight: 600;
+}
+
+#speed-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  background-color: #ffffff; /* White background for display */
+  border-radius: 8px;
+  padding: 12px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#speedValue {
+  font-weight: 700;
+  font-size: 32px;
+  margin: 0 20px;
+  min-width: 90px;
+  color: #007bff; /* Toss-like blue accent */
+}
+
+.control-btn {
+  background-color: #e9ecef; /* Light gray for controls */
+  color: #495057; /* Darker gray for icons */
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.control-btn:hover {
+  background-color: #dee2e6; /* Slightly darker on hover */
+  transform: scale(1.05);
+}
+
+#speedSlider {
+  width: 100%;
+  margin-bottom: 25px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: #e9ecef; /* Light gray track */
+  outline: none;
+  opacity: 0.9;
+  transition: opacity .2s;
+}
+
+#speedSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #007bff; /* Toss-like blue thumb */
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#speedSlider:hover {
+  opacity: 1;
+}
+
+#preset-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.preset-btn {
+  background-color: #ffffff; /* White background */
+  color: #495057; /* Dark gray text */
+  border: 1px solid #e9ecef; /* Light gray border */
+  border-radius: 8px;
+  padding: 10px 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.preset-btn:hover {
+  background-color: #f1f3f5; /* Slightly darker on hover */
+  border-color: #ced4da;
+}
+
+.preset-btn.active {
+  background-color: #007bff; /* Toss-like blue when active */
+  color: #ffffff;
+  border-color: #007bff;
+  box-shadow: 0 3px 8px rgba(0, 123, 255, 0.2);
+}
+
+#footer {
+  margin-top: 25px;
+  border-top: 1px solid #e9ecef; /* Light gray separator */
+  padding-top: 15px;
+}
+
+#footer p {
+  margin: 5px 0;
+  font-size: 12px;
+  color: #6c757d; /* Medium gray */
+}
+
+#footer a {
+  color: #007bff; /* Toss-like blue link */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+#footer a:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline;
+}
